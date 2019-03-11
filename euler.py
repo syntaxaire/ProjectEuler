@@ -2,6 +2,21 @@
 # syntaxaire
 
 
+# From Problem 1: Multiples of 3 and 5
+# final solution for hackerrank, O(1)
+def sum_of_multiples_of_n_up_to_m(n, m, inclusive=True):
+    """Return the sum of the multiples of n up to (or under) m.
+    Example: the sum of multiples of 3 under 17 is 3 + 6 + 9 + 12 + 15 = 45.
+    See: https://oeis.org/A045943"""
+    if inclusive:
+        count = m // n
+    else:
+        count = (m-1) // n
+    term = n * count**2 + n * count
+    term = term >> 1
+    return term
+
+
 # From Problem 3: Largest Prime Factor
 def prime_factors(number):
     """
@@ -155,3 +170,19 @@ def gen_number_spiral_diagonals(max):
             term += inc
             yield term
         inc += 2
+
+
+# From Problem 35: Circular primes
+def rotations(s):
+    """Return a list containing the rotations of a string. If string is one character,
+    the list contains only that character."""
+    ret = list()
+    if len(s) == 1:
+        ret.append(s)
+    else:
+        for i in range(1, len(s) + 1):
+            ret.append(s[len(s)-i:] + s[:len(s)-i])
+    return ret
+
+
+#
